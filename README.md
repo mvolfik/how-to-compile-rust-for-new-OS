@@ -213,6 +213,8 @@ See the documentation of bootstrapping: https://rustc-dev-guide.rust-lang.org/bu
 
 In rust source: `rustup toolchain link dev-stage1 build/host/stage1`. In app: `rustup override set dev-stage1`.
 
+**Always** build the application with `-Z binary-dep-depinfo` cargo flag. (If you have done a build without this, `rm -rf target/`.) This ensures that the some information about the exact "binary version" of libstd is encoded somewhere, and if you build a new libstd, the necessary things are recompiled. See https://github.com/rust-lang/rust/issues/63012
+
 TODO: more about linking?
 
 ### 4. More complete Rust support
